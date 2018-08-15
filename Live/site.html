@@ -1,0 +1,50 @@
+<!doctype html>
+
+<head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/stylesheet.css') }}"> <!--{{ url_for('static',filename='styles/stylesheet.css') }}-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:300,400" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{{ url_for('static',filename='favicon.png') }}">
+  <title>Stream Sense {{location}}</title>
+</head>
+
+<body>
+  <div id=top style="background-color:#333; height:70px;" >
+    <img src="{{ url_for('static',filename='StreamSense.png') }}"style="width:466px;height:70;"><!--{{ url_for('static',filename='StreamSense.png') }}-->
+  <div id="docs" align=right>
+    <a href="http://webcam.menon.pro:1010/docs">
+      <docs>Docs</docs>
+    </a>
+  </div>
+  </div>
+  <div class="row">
+    <div class="column3" align=left id=box>
+      <selected>You've Selected</selected>
+      <location>{{location}}</location>
+      <update>Updated {{lastUpdate}}</update>
+      <div id="battery" align=right>
+        <img src="{{ url_for('static',filename=battery) }}"style="width:50px;height:95;">
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column" align=center id=box>
+      <h2>Current Stage</h2>
+      <big-number>{{current}}</big-number>
+      <units>centimeters</units>
+    </div>
+    <div class="column2" align=center>
+      <h2>Stage History</h2>
+      <embed type="image/svg+xml" src={{graph_data|safe}} style='max-width:1000px'/>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="column4" align=left id=box>
+      <a href="{{ url_for('static',filename='StageData.csv') }}" download="Stage_Data">
+        <location>Download CSV</location>
+      </a>
+    </div>
+  </div>
+</body>
